@@ -1,4 +1,5 @@
 import styles from "./FeedbackOptions.module.scss"
+import PropTypes from 'prop-types';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     return (
@@ -10,4 +11,9 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
             ))}
         </ul>
     )
+}
+
+FeedbackOptions.propTypes = {
+    onLeaveFeedback: PropTypes.func.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string),
 }

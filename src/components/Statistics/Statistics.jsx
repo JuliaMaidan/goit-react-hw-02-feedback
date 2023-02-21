@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import { Notification } from '../Notification/Notification';
 import style from "./Statistics.module.scss"
+import PropTypes from 'prop-types';
 
 export class Statistics extends Component{
 
     render() {
         const { good, neutral, bad, total, positivePercentage } = this.props
-
-        if (total === 0) {
-            return <Notification message="There is no feedback" />
-        }
 
         return (
             <ul className={style.list}>
@@ -21,4 +17,12 @@ export class Statistics extends Component{
             </ul>
     )
     }
+}
+
+Statistics.propTypes = {
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired,
 }

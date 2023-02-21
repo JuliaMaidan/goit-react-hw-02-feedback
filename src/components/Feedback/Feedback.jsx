@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Section } from "../Section/Section";
 import { Statistics } from "../Statistics/Statistics"
 import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
-
+import { Notification } from '../Notification/Notification';
 
 export class Feedback extends Component {
 
@@ -44,15 +43,9 @@ export class Feedback extends Component {
                     <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.onLeaveFeedback} />
                 </Section>
                 <Section title="Statistics">
-                    <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage}></Statistics>
+                    {total === 0 ? <Notification message="There is no feedback" /> : <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage}></Statistics>}
                 </Section>
             </div>
         )
     }
 }
-
-Feedback.propTypes = {
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-};
